@@ -138,7 +138,7 @@ public class DocxToPdfUtils
             fileOutputStream = new FileOutputStream(new File(pdfPath));
             WordprocessingMLPackage mlPackage = WordprocessingMLPackage.load(file);
             setFontMapper(mlPackage);
-            Docx4J.toPDF(mlPackage, new FileOutputStream(new File(pdfPath)));
+            Docx4J.toPDF(mlPackage, fileOutputStream);//此处应使上面创建好的流否则在多线程场景会导致生成的pdf损坏打不开
         }
         catch (Exception e)
         {
